@@ -2,7 +2,7 @@
 
 namespace App\Http\Middleware;
 
-use App\Traits\ApiResponser;
+use App\Models\User;
 use Closure;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Http\Response;
@@ -20,10 +20,19 @@ class EnsureEmailIsVerified
      */
     public function handle($request, Closure $next, $redirectToRoute = null)
     {
-        if ($request->user() instanceof MustVerifyEmail &&
-            ! $request->user()->hasVerifiedEmail()) {
-            return response()->json(["resMsg" => "Your email address is not verified. Please verify you email address to continue.","resCode" => Response::HTTP_FORBIDDEN]);
+        //Get user model
+        $user = User::where('email', $request->email)->first();
+        //Check if user has signed up
+        //If user is not signed up, let the login action handle the request
+        if($user)
+        {
+            //Check if the email is verified
+            if ($user instanceof MustVerifyEmail &&
+                ! $user->hasVerifiedEmail()) {
+                return response()->json(["resMsg" => "Your email address is not verified. Please verify you email address to continue.","resCode" => Response::HTTP_FORBIDDEN]);
+            }
         }
+        
         return $next($request);
     }
 }

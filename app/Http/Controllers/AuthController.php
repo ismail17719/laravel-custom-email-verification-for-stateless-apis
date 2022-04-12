@@ -23,12 +23,17 @@ class AuthController extends Controller
     public function signup(Request $request)
     {
         //validate request
-        Validator::make($request->all(), [
-            'name' => 'require',
-            'email' => 'require|email|unique:users,email',
-            'password' => 'require|confirmed',
+        $validator = Validator::make($request->all(), [
+            'name' => 'required',
+            'email' => 'required|email|unique:users,email',
+            'password' => 'required|confirmed',
         ]);
-
+        //Check for any validation voilations
+        if($validator->fails())
+        {
+            //Return validation failed response
+            return response()->json(['resMsg' => $validator->messages()->all(),'resCode' => Response::HTTP_BAD_REQUEST]);
+        }
         //Monitor for errors and exceptions
         try {
             //Create user

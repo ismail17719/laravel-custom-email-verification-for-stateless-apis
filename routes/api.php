@@ -25,7 +25,7 @@ Route::post('/login', function (Request $request) {
         return response()->json(['resMsg' => "Login successful", 'resCode' => Response::HTTP_OK]);
     }
     return response()->json(['resMsg' => "Login failed", 'resCode' => Response::HTTP_FORBIDDEN]);
-});
+})->middleware('verified');
 
 //User signup route
 Route::post('/signup', [AuthController::class, 'signup']);
