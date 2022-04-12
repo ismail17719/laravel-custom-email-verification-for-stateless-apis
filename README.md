@@ -1,8 +1,8 @@
 <img src="https://yourimageshare.com/ib/hrlhyYfBWr.jpg" alt="License">
 
-## About Laravel
+## About Email Verification
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Laravel comes with builtin elegant solution for email verification which most web applications require so frequently. Setting up a secure email verification system is a breeze in Laravel but by default it only supports stateful requests with standard HTTP redirects. There is a lot of ado if your API based application requires email verification because the builtin solution won't work with that. I have tried to cover the mundane task and give a head start to everyone looking for a solution like this:
 
 - [Simple, fast routing engine](https://laravel.com/docs/routing).
 - [Powerful dependency injection container](https://laravel.com/docs/container).
