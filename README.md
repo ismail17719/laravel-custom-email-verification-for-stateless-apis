@@ -36,6 +36,7 @@ php artisan key:generate
 php artisan migrate --seed
 ```
 8. We also need to build the project resources. To do that you should to have Nodejs installed
+
 For signup:
 ```sh
 curl --location --request POST 'http://yourdomain.com/project-directory/public/api/signup' \
