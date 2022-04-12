@@ -52,6 +52,6 @@ curl --location --request POST 'http://yourdomain.com/project-directory/public/a
 --form 'email="youremail@domain.com"' \
 --form 'password="YOUR DOMAIN"'
 ```
-9. You shoul get json responses
+9. You should get correct JSON responses for all requests
 
  :boom: :boom: :boom:
