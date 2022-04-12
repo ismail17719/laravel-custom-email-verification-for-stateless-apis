@@ -4,54 +4,54 @@
 
 Laravel comes with builtin elegant solution for email verification which most web applications require so frequently. Setting up a secure email verification system is a breeze in Laravel but by default it only supports stateful requests with standard HTTP redirects. There is a lot of ado if your API based application requires email verification because the builtin solution won't work with that. I have tried to cover the mundane task and give a head start to everyone looking for a solution like this:
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Steps to Rebuild
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+**_All the commands down below should be run in project's root directory_**
+1. Clone the repository by running the following command
+```sh
+git clone https://github.com/ismail17719/Rhanra.git
+```
+2. Open the terminal and go to the project root directory
+3. Run the composer command to install all dependencies
+```sh
+composer install
+```
+4. Open .env.example and save it as .env file in the same root directory
+5. Open .env file and change the following database details
+```
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=YOURDATABASE
+DB_USERNAME=USERNAME
+DB_PASSWORD=PASSWORD
+```
 
-## Learning Laravel
+6. Run the following command to generate a unique for the application
+```sh
+php artisan key:generate
+```
+7.  Next we need to build the database. In order to do that run the following command in terminal. Let the process complete
+```sh
+php artisan migrate --seed
+```
+8. We also need to build the project resources. To do that you should to have Nodejs installed
+For signup:
+```sh
+curl --location --request POST 'http://yourdomain.com/project-directory/public/api/signup' \
+--header 'Accept: application/json' \
+--form 'name="YOUR NAME"' \
+--form 'email="youremail@domain.com"' \
+--form 'password="YOUR PASSWORD"' \
+--form 'password_confirmation="YOUR PASSWORD"'
+```
+For login:
+```sh
+curl --location --request POST 'http://yourdomain.com/project-directory/public/api/login' \
+--header 'Accept: application/json' \
+--form 'email="youremail@domain.com"' \
+--form 'password="YOUR DOMAIN"'
+```
+9. You shoul get json responses
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
-
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
-
-## Laravel Sponsors
-
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
-
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+ :boom: :boom: :boom:
